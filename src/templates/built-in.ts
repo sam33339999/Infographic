@@ -754,12 +754,14 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
     design: {
       title: 'default',
       structure: { type: 'treemap', mapWidth: 600, mapHeight: 400, tile: 'squarify' },
+      item: { type: 'simple' },
     },
   },
   'treemap-binary': {
     design: {
       title: 'default',
       structure: { type: 'treemap', mapWidth: 600, mapHeight: 400, tile: 'binary' },
+      item: { type: 'simple' },
     },
   },
   ...architectureTemplates,
