@@ -1,7 +1,7 @@
 import { DagreLayout } from '@antv/layout';
 import type { ComponentType, JSXElement } from '../../jsx';
-import { Defs, getElementBounds, Group, Path, Rect, Text } from '../../jsx';
-import type { RelationData } from '../../types';
+import { getElementBounds, Group, Path, Rect, Text } from '../../jsx';
+import type { ItemDatum, RelationData, RelationEdgeDatum } from '../../types';
 import { BtnAdd, BtnsGroup, ItemsGroup, ShapesGroup } from '../components';
 import { FlexLayout } from '../layouts';
 import {
@@ -27,7 +27,7 @@ export interface ArchitectureProps extends BaseStructureProps {
 
 interface NodeLayout {
   id: string;
-  datum: any;
+  datum: ItemDatum;
   indexes: number[];
   group: string;
   themeColors: ReturnType<typeof getThemeColors>;
@@ -68,7 +68,7 @@ export const Architecture: ComponentType<ArchitectureProps> = (props) => {
   const nodeIdSet = new Set<string>();
   const nodeIdsByIndex = new Map<number, string>();
   const nodeSizeMap = new Map<string, { width: number; height: number }>();
-  const nodeMetaMap = new Map<string, { id: string; datum: any; indexes: number[]; group: string; themeColors: ReturnType<typeof getThemeColors> }>();
+  const nodeMetaMap = new Map<string, { id: string; datum: ItemDatum; indexes: number[]; group: string; themeColors: ReturnType<typeof getThemeColors> }>();
   const colorGroupMap = new Map<string, number>();
   let nextGroupColor = 0;
 
@@ -237,7 +237,7 @@ export const Architecture: ComponentType<ArchitectureProps> = (props) => {
       ...createArrowElements(end[0], end[1], angle, 'triangle', defaultStroke, edgeWidth, arrowSize),
     );
 
-    const relation = (edge as any)._original?.relation;
+    const relation = (edge as { _original?: { relation?: RelationEdgeDatum } })._original?.relation;
     if (relation?.label) {
       const mp = getMidPoint(pts);
       if (mp) {
@@ -276,7 +276,6 @@ export const Architecture: ComponentType<ArchitectureProps> = (props) => {
     <FlexLayout id="infographic-container" flexDirection="column" justifyContent="center" alignItems="center">
       {titleContent}
       <Group>
-        <Defs>{[]}</Defs>
         <ShapesGroup>{decoElements}</ShapesGroup>
         <ItemsGroup>{itemElements}</ItemsGroup>
         <BtnsGroup />
