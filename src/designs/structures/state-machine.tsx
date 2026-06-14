@@ -16,6 +16,10 @@ import {
 import { registerStructure } from './registry';
 import type { BaseStructureProps } from './types';
 
+const LOOP_RADIUS = 20;
+const INITIAL_CIRCLE_RADIUS = 8;
+const INITIAL_OFFSET = 30;
+
 interface NodeLayout {
   id: string;
   datum: ItemDatum;
@@ -67,7 +71,7 @@ export const StateMachine: ComponentType<StateMachineProps> = (props) => {
   const nodeMetaMap = new Map<string, { id: string; datum: ItemDatum; indexes: number[]; themeColors: ReturnType<typeof getThemeColors> }>();
 
   const nodes = items.map((item, index) => {
-    const id = String((item as any).id ?? index);
+    const id = String((item as { id?: string | number }).id ?? index);
     const primary = getPaletteColor(options, [index]) ?? getColorPrimary(options);
     const themeColors = getThemeColors({ colorPrimary: primary }, options);
     const bounds = getElementBounds(
@@ -110,7 +114,7 @@ export const StateMachine: ComponentType<StateMachineProps> = (props) => {
     edgesep: 10,
     controlPoints: true,
     nodeSize: (node) => {
-      const b = nodeSizeMap.get(String((node as any).id ?? ''));
+      const b = nodeSizeMap.get(String((node as { id?: string | number }).id ?? ''));
       return b ? [b.width, b.height] : [0, 0];
     },
   });
@@ -201,7 +205,6 @@ export const StateMachine: ComponentType<StateMachineProps> = (props) => {
   });
 
   // Self-loop edges: cubic arc above the node
-  const LOOP_RADIUS = 20;
   selfLoopRelations.forEach((r) => {
     const srcId = resolveId(r.from);
     if (!srcId) return;
@@ -237,10 +240,8 @@ export const StateMachine: ComponentType<StateMachineProps> = (props) => {
   });
 
   // Initial/final state markers
-  const INITIAL_CIRCLE_RADIUS = 8;
-  const INITIAL_OFFSET = 30;
   nodeLayouts.forEach((n) => {
-    const attrs = (n.datum as any).attributes ?? {};
+    const attrs = n.datum.attributes ?? {};
 
     if (attrs.initial) {
       const mx = n.x - INITIAL_OFFSET;
