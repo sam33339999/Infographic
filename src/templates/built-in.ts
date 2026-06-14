@@ -746,6 +746,18 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
       ],
     },
   },
+  'treemap-simple': {
+    design: {
+      title: 'default',
+      structure: { type: 'treemap', mapWidth: 600, mapHeight: 400, tile: 'squarify' },
+    },
+  },
+  'treemap-binary': {
+    design: {
+      title: 'default',
+      structure: { type: 'treemap', mapWidth: 600, mapHeight: 400, tile: 'binary' },
+    },
+  },
   ...kanbanTemplates,
   ...chartPieTemplates,
   ...compareQuadrantTemplates,

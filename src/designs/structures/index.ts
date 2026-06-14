@@ -42,4 +42,5 @@ export * from './sequence-timeline';
 export * from './sequence-zigzag-pucks-3d';
 export * from './sequence-zigzag-steps';
 export * from './kanban';
+export * from './treemap';
 export type * from './types';
