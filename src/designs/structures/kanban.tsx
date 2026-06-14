@@ -58,6 +58,9 @@ export const Kanban: ComponentType<KanbanProps> = (props) => {
   const decoElements: JSXElement[] = [];
   const btnElements: JSXElement[] = [];
 
+  const itemIndexMap = new Map<(typeof items)[number], number>();
+  items.forEach((item, i) => itemIndexMap.set(item, i));
+
   let colX = 0;
   categoryOrder.forEach((cat, colIndex) => {
     const colItems = grouped.get(cat)!;
@@ -87,7 +90,7 @@ export const Kanban: ComponentType<KanbanProps> = (props) => {
 
     let itemY = headerHeight + itemGap;
     colItems.forEach((item) => {
-      const flatIndex = items.indexOf(item);
+      const flatIndex = itemIndexMap.get(item) ?? 0;
       itemElements.push(
         <Item
           indexes={[flatIndex]}
