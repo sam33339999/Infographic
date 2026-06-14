@@ -8,6 +8,7 @@ import { hierarchyTreeTemplates } from './hierarchy-tree';
 import { listZigzagTemplates } from './list-zigzag';
 import { registerTemplate } from './registry';
 import { relationDagreFlowTemplates } from './relation-dagre-flow';
+import { stateMachineTemplates } from './state-machine';
 import { sequenceInteractionTemplates } from './sequence-interaction';
 import { sequenceStairsTemplates } from './sequence-stairs';
 import type { TemplateOptions } from './types';
@@ -769,6 +770,7 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
   ...wordCloudTemplate,
   ...listZigzagTemplates,
   ...relationDagreFlowTemplates,
+  ...stateMachineTemplates,
   ...sequenceInteractionTemplates,
   ...hierarchyStructureTemplates,
 };

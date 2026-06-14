@@ -43,5 +43,6 @@ export * from './sequence-zigzag-pucks-3d';
 export * from './sequence-zigzag-steps';
 export * from './architecture';
 export * from './kanban';
+export * from './state-machine';
 export * from './treemap';
 export type * from './types';
