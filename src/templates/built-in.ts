@@ -1,3 +1,4 @@
+import { architectureTemplates } from './architecture';
 import { chartPieTemplates } from './chart-pie';
 import { kanbanTemplates } from './kanban';
 import { compareQuadrantTemplates } from './compare-quadrant';
@@ -758,6 +759,7 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
       structure: { type: 'treemap', mapWidth: 600, mapHeight: 400, tile: 'binary' },
     },
   },
+  ...architectureTemplates,
   ...kanbanTemplates,
   ...chartPieTemplates,
   ...compareQuadrantTemplates,
