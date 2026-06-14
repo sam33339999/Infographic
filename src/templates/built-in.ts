@@ -4,6 +4,7 @@ import { kanbanTemplates } from './kanban';
 import { compareQuadrantTemplates } from './compare-quadrant';
 import { hierarchyMindmapTemplates } from './hierarchy-mindmap';
 import { hierarchyStructureTemplates } from './hierarchy-structure';
+import { requirementTemplates } from './requirement';
 import { hierarchyTreeTemplates } from './hierarchy-tree';
 import { listZigzagTemplates } from './list-zigzag';
 import { registerTemplate } from './registry';
@@ -773,6 +774,7 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
   ...stateMachineTemplates,
   ...sequenceInteractionTemplates,
   ...hierarchyStructureTemplates,
+  ...requirementTemplates,
 };
 
 Object.entries(BUILT_IN_TEMPLATES).forEach(([name, options]) => {

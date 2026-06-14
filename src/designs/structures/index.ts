@@ -45,4 +45,5 @@ export * from './architecture';
 export * from './kanban';
 export * from './state-machine';
 export * from './treemap';
+export * from './requirement';
 export type * from './types';
