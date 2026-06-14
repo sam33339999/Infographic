@@ -1,4 +1,5 @@
 import { chartPieTemplates } from './chart-pie';
+import { kanbanTemplates } from './kanban';
 import { compareQuadrantTemplates } from './compare-quadrant';
 import { hierarchyMindmapTemplates } from './hierarchy-mindmap';
 import { hierarchyStructureTemplates } from './hierarchy-structure';
@@ -745,6 +746,7 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
       ],
     },
   },
+  ...kanbanTemplates,
   ...chartPieTemplates,
   ...compareQuadrantTemplates,
   ...hierarchyTreeTemplates,
