@@ -1,16 +1,12 @@
-import { architectureTemplates } from './architecture';
 import { chartPieTemplates } from './chart-pie';
 import { kanbanTemplates } from './kanban';
 import { compareQuadrantTemplates } from './compare-quadrant';
 import { hierarchyMindmapTemplates } from './hierarchy-mindmap';
 import { hierarchyStructureTemplates } from './hierarchy-structure';
-import { requirementTemplates } from './requirement';
-import { c4Templates } from './c4';
 import { hierarchyTreeTemplates } from './hierarchy-tree';
 import { listZigzagTemplates } from './list-zigzag';
 import { registerTemplate } from './registry';
 import { relationDagreFlowTemplates } from './relation-dagre-flow';
-import { stateMachineTemplates } from './state-machine';
 import { sequenceInteractionTemplates } from './sequence-interaction';
 import { sequenceStairsTemplates } from './sequence-stairs';
 import type { TemplateOptions } from './types';
@@ -764,7 +760,6 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
       item: { type: 'simple' },
     },
   },
-  ...architectureTemplates,
   ...kanbanTemplates,
   ...chartPieTemplates,
   ...compareQuadrantTemplates,
@@ -774,11 +769,8 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
   ...wordCloudTemplate,
   ...listZigzagTemplates,
   ...relationDagreFlowTemplates,
-  ...stateMachineTemplates,
   ...sequenceInteractionTemplates,
   ...hierarchyStructureTemplates,
-  ...requirementTemplates,
-  ...c4Templates,
 };
 
 Object.entries(BUILT_IN_TEMPLATES).forEach(([name, options]) => {
