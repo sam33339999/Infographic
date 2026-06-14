@@ -51,4 +51,10 @@ describe('Treemap', () => {
     expect(svg).toContain('>B<');
     expect(svg).toContain('>C<');
   });
+
+  it('renders without crashing on empty data', () => {
+    const emptyData = { items: [] } as unknown as ParsedData;
+    const svg = renderSVG(<Treemap Item={Item} Items={[]} data={emptyData} options={options} />);
+    expect(svg).toBeTruthy();
+  });
 });

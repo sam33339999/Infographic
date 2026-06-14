@@ -1,4 +1,3 @@
-// src/designs/structures/state-machine.tsx
 import { DagreLayout } from '@antv/layout';
 import type { ComponentType, JSXElement } from '../../jsx';
 import { Ellipse, getElementBounds, Group, Path, Text } from '../../jsx';

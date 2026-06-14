@@ -1,4 +1,3 @@
-// src/templates/state-machine.ts
 import type { TemplateOptions } from './types';
 
 const base = { type: 'state-machine', rankdir: 'TB' } as const;

@@ -36,4 +36,10 @@ describe('Requirement', () => {
     const svg = minifySvg(renderSVG(<Requirement Item={Item} Items={[]} data={data} options={options} />));
     expect(svg).toContain('satisfies');
   });
+
+  it('renders without crashing on empty data', () => {
+    const emptyData = { items: [], relations: [] } as unknown as ParsedData;
+    const svg = renderSVG(<Requirement Item={Item} Items={[]} data={emptyData} options={options} />);
+    expect(svg).toBeTruthy();
+  });
 });

@@ -1,7 +1,7 @@
 import { DagreLayout } from '@antv/layout';
 import type { ComponentType, JSXElement } from '../../jsx';
 import { getElementBounds, Group, Path, Rect, Text } from '../../jsx';
-import type { ItemDatum, RelationData, RelationEdgeDatum } from '../../types';
+import type { ItemDatum, RelationData, RelationEdgeDatum, RelationNodeDatum } from '../../types';
 import { BtnAdd, BtnsGroup, ItemsGroup, ShapesGroup } from '../components';
 import { FlexLayout } from '../layouts';
 import {
@@ -73,8 +73,8 @@ export const Architecture: ComponentType<ArchitectureProps> = (props) => {
   let nextGroupColor = 0;
 
   const nodes = items.map((item, index) => {
-    const id = String((item as any).id ?? index);
-    const groupKey = String((item as any).group ?? '');
+    const id = String((item as RelationNodeDatum).id ?? index);
+    const groupKey = String((item as RelationNodeDatum).group ?? '');
     if (groupKey && !colorGroupMap.has(groupKey)) {
       colorGroupMap.set(groupKey, nextGroupColor++);
     }
@@ -108,7 +108,7 @@ export const Architecture: ComponentType<ArchitectureProps> = (props) => {
       if (!src || !tgt) return null;
       return { id: `e${i}`, source: src, target: tgt, relation: r };
     })
-    .filter(Boolean) as { id: string; source: string; target: string; relation: any }[];
+    .filter(Boolean) as { id: string; source: string; target: string; relation: RelationEdgeDatum }[];
 
   const layout = new DagreLayout({
     rankdir,

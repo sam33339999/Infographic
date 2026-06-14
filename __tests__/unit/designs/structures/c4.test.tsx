@@ -44,4 +44,10 @@ describe('C4', () => {
     const rects = svg.match(/width="120"/g) ?? [];
     expect(rects.length).toBeGreaterThanOrEqual(3);
   });
+
+  it('renders without crashing on empty data', () => {
+    const emptyData = { items: [], relations: [] } as unknown as ParsedData;
+    const svg = renderSVG(<C4 Item={Item} Items={[]} data={emptyData} options={options} />);
+    expect(svg).toBeTruthy();
+  });
 });

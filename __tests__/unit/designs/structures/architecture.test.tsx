@@ -41,4 +41,10 @@ describe('Architecture', () => {
     const itemRects = svg.match(/width="80"/g) ?? [];
     expect(itemRects.length).toBeGreaterThanOrEqual(3);
   });
+
+  it('renders without crashing on empty data', () => {
+    const emptyData = { items: [], relations: [] } as unknown as ParsedData;
+    const svg = renderSVG(<Architecture Item={Item} Items={[]} data={emptyData} options={options} />);
+    expect(svg).toBeTruthy();
+  });
 });

@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import type { ComponentType, JSXElement } from '../../jsx';
 import { Group, Rect, Text } from '../../jsx';
-import { BtnsGroup, ShapesGroup } from '../components';
+import { BtnAdd, BtnsGroup, ShapesGroup } from '../components';
 import { FlexLayout } from '../layouts';
 import { getColorPrimary, getPaletteColor } from '../utils';
 import { registerStructure } from './registry';
@@ -39,7 +39,7 @@ export const Treemap: ComponentType<TreemapProps> = (props) => {
     return (
       <FlexLayout id="infographic-container" flexDirection="column" justifyContent="center" alignItems="center">
         {titleContent}
-        <Group />
+        <Group><BtnAdd indexes={[0]} x={0} y={0} /></Group>
       </FlexLayout>
     );
   }
@@ -60,15 +60,12 @@ export const Treemap: ComponentType<TreemapProps> = (props) => {
   const decoElements: JSXElement[] = [];
 
   hierarchy.descendants().forEach((node) => {
-    const x0: number = (node as any).x0;
-    const y0: number = (node as any).y0;
-    const x1: number = (node as any).x1;
-    const y1: number = (node as any).y1;
+    const { x0, y0, x1, y1 } = node as unknown as { x0: number; y0: number; x1: number; y1: number };
     const w = x1 - x0;
     const h = y1 - y0;
     if (w <= 0 || h <= 0) return;
 
-    const leafIndex = leaves.indexOf(node as any);
+    const leafIndex = leaves.indexOf(node);
     const isLeaf = leafIndex >= 0;
     const fill = isLeaf
       ? (getPaletteColor(options, [leafIndex]) ?? colorPrimary)

@@ -45,4 +45,10 @@ describe('StateMachine', () => {
     const svg = minifySvg(renderSVG(<StateMachine Item={Item} Items={[]} data={data} options={options} />));
     expect(svg).toContain('data-marker="final"');
   });
+
+  it('renders without crashing on empty data', () => {
+    const emptyData = { items: [], relations: [] } as unknown as ParsedData;
+    const svg = renderSVG(<StateMachine Item={Item} Items={[]} data={emptyData} options={options} />);
+    expect(svg).toBeTruthy();
+  });
 });

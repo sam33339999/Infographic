@@ -219,7 +219,7 @@ export const Requirement: ComponentType<RequirementProps> = (props) => {
 
   // Node header strips
   nodeLayouts.forEach((n) => {
-    const attrs = n.datum.attributes as Record<string, unknown> ?? {};
+    const attrs = (n.datum.attributes ?? {}) as Record<string, unknown>;
     const reqType = String(attrs.reqType ?? 'requirement');
     const risk = String(attrs.risk ?? '');
     const headerLabel = REQ_TYPE_LABELS[reqType] ?? reqType;
