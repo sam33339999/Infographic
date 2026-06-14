@@ -46,4 +46,5 @@ export * from './kanban';
 export * from './state-machine';
 export * from './treemap';
 export * from './requirement';
+export * from './c4';
 export type * from './types';

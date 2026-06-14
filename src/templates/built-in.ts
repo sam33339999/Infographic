@@ -5,6 +5,7 @@ import { compareQuadrantTemplates } from './compare-quadrant';
 import { hierarchyMindmapTemplates } from './hierarchy-mindmap';
 import { hierarchyStructureTemplates } from './hierarchy-structure';
 import { requirementTemplates } from './requirement';
+import { c4Templates } from './c4';
 import { hierarchyTreeTemplates } from './hierarchy-tree';
 import { listZigzagTemplates } from './list-zigzag';
 import { registerTemplate } from './registry';
@@ -775,6 +776,7 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
   ...sequenceInteractionTemplates,
   ...hierarchyStructureTemplates,
   ...requirementTemplates,
+  ...c4Templates,
 };
 
 Object.entries(BUILT_IN_TEMPLATES).forEach(([name, options]) => {
